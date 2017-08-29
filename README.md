@@ -5,9 +5,30 @@ This project is a monitoring service which can monitor a SQL Server table for ne
 as a new record is found the service logs the new record to a file called C:\alerts.txt.
 
 ---
-Implemented as a Windows Service which checks the database for new records every x number of seconds.(x can be specified in the config file.)
+Implemented as a Windows Service which checks the database for new records every x number of seconds.(x can be specified in the app.config file.)
 
---
+---
+
+## Config file
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+    </startup>
+
+  <connectionStrings>
+    <add name="dbConnectionString"
+        connectionString="YOUR_CONNECTION_STRING"
+        providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <appSettings>
+    <add key="PollingInterval" value="6000"/>
+   </appSettings>
+</configuration>
+
+```
+---
 ## Database
 * The database used to test the service was SQL Server database. 
 * Table used was named SensorData (used for an IoT solution)
