@@ -49,7 +49,7 @@ namespace DatabaseMonitoringWindowsService
 
         static int getRowCount()
         {
-            string connString = "Data Source=BEKA\\SQLEXPRESS;Initial Catalog=xmprotestdb;Integrated Security=True";
+            string connString = "YOUR_CONNECTION_STRING";
             string stmt = "SELECT COUNT(*) FROM dbo.[SensorData]";
             int count = 0;
 
@@ -65,8 +65,8 @@ namespace DatabaseMonitoringWindowsService
         }
         static void getRow()
         {
-            string connString = "Data Source=BEKA\\SQLEXPRESS;Initial Catalog=xmprotestdb;Integrated Security=True";
-            string stmt = "SELECT TOP(1) * FROM[xmprotestdb].[dbo].[SensorData] ORDER BY[ReadingID] DESC";
+            string connString = "YOUR_CONNECTION_STRING";
+            string stmt = "SELECT TOP(1) * FROM[SensorDataDB].[dbo].[SensorData] ORDER BY[ReadingID] DESC";
 
             SqlConnection sqlConnection1 = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand();
