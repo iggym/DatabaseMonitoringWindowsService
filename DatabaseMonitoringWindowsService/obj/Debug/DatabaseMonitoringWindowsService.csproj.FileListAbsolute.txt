@@ -1,0 +1,8 @@
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\bin\Debug\DatabaseMonitoringWindowsService.exe.config
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\bin\Debug\DatabaseMonitoringWindowsService.exe
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\bin\Debug\DatabaseMonitoringWindowsService.pdb
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\obj\Debug\DatabaseMonitoringWindowsService.exe
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\obj\Debug\DatabaseMonitoringWindowsService.pdb
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\obj\Debug\DatabaseMonitoringWindowsService.ProjectInstaller.resources
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\obj\Debug\DatabaseMonitoringWindowsService.csproj.GenerateResource.Cache
+C:\Users\maxcu\Documents\Visual Studio 2017\Projects\DatabaseMonitoringWindowsService\DatabaseMonitoringWindowsService\obj\Debug\DatabaseMonitoringWindowsService.csprojResolveAssemblyReference.cache
