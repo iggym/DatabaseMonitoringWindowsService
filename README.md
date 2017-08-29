@@ -62,3 +62,35 @@ VALUES (RAND(),RAND(),RAND(),GETDATE())
 
 ## Installation
 The project also includes a Service Installer.
+
+## Implementation details
+The monitoring implementation is very simple. A timer is used to execute a database query every so often (every minute for example). 
+### Monitoring code 
+```c#
+  protected override void OnStart(string[] args)
+        {
+            currentRowCount = getRowCount();
+            //setup timer for polling
+            SetupTimer();
+        }
+
+        private void SetupTimer()
+        {
+            // Set up a timer to trigger every minute.  
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = Int32.Parse(ConfigurationManager.AppSettings["PollingInterval"]);
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
+            timer.Start();
+        }
+        public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
+        {
+            //   monitoring activities here.  
+            int rowCount = getRowCount();
+            if (currentRowCount > rowCount )
+            {
+                LogAlert();();
+            }
+           
+        }
+ ```
+ 
