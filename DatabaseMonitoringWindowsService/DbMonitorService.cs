@@ -42,7 +42,7 @@ namespace DatabaseMonitoringWindowsService
             int rowCount = getRowCount();
             if (currentRowCount > rowCount )
             {
-                getRowCount();
+                LogAlert();
             }
            
         }
@@ -63,7 +63,7 @@ namespace DatabaseMonitoringWindowsService
             }
             return count;
         }
-        static void getRow()
+        static void LogAlert()
         {
             string connString = "YOUR_CONNECTION_STRING";
             string stmt = "SELECT TOP(1) * FROM[SensorDataDB].[dbo].[SensorData] ORDER BY[ReadingID] DESC";
