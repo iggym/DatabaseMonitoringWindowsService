@@ -2,7 +2,7 @@
 Database Monitoring Windows Service
 
 This project is a monitoring service which can monitor a SQL Server table for new records. As soon
-as a new record is found service logs the new record to a file called C:\alerts.txt.
+as a new record is found the service logs the new record to a file called C:\alerts.txt.
 
 ---
 Implemented as a Windows Service which checks the database for new records every x number of seconds.(x can be specified in the config file.)
@@ -13,7 +13,7 @@ Implemented as a Windows Service which checks the database for new records every
 * Table used was named SensorData (used for an IoT solution)
 
 ![database table](table.png)
-```
+```sql
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,8 +32,12 @@ ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
 * Test data 
+
 ![data](sampledata.png)
-```
+```sql
 INSERT INTO [dbo].[SensorData] ([Temperature], [Pressure], [Luminosity], [Timestamp])
 VALUES (RAND(),RAND(),RAND(),GETDATE())
 ```
+
+## Installation
+The project also includes a Service Installer.
