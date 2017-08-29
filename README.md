@@ -93,4 +93,48 @@ The monitoring implementation is very simple. A timer is used to execute a datab
            
         }
  ```
+ ### Log Alert
+ Log Alert gets the data and appends it to the alerts file
+ ```c#
+  static void LogAlert()
+        {
+            string connString = "YOUR_CONNECTION_STRING";
+            string stmt = "SELECT TOP(1) * FROM[SensorDataDB].[dbo].[SensorData] ORDER BY[ReadingID] DESC";
+
+            SqlConnection sqlConnection1 = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = stmt;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = sqlConnection1;
+
+            sqlConnection1.Open();
+
+            reader = cmd.ExecuteReader();
+            // Data is accessible through the DataReader object here.
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                   // Console.WriteLine(reader["Temperature"]);
+                    string id = reader["ReadingID"].ToString();
+                    string temp = reader["Temperature"].ToString();
+                    string pressure = reader["Pressure"].ToString();
+                    string luminosity = reader["[luminosity"].ToString();
+                    string timeStamp = reader["Time/stamp"].ToString();
+                    //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    string logline = id + "," + temp + "," + pressure + "," + luminosity + "," + timeStamp;
+                    File.AppendAllText(@"c:\alerts.txt", logline + Environment.NewLine);
+                    //TODO windows events, other 
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+            sqlConnection1.Close();
+        }
+ ```
  
