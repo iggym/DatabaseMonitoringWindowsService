@@ -10,15 +10,22 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using System.Diagnostics;
 
 namespace DatabaseMonitoringWindowsService
 {
     public partial class DbMonitorService : ServiceBase
     {
         int currentRowCount;
+        string source;
+        string log;
+        string eventToWrite;
         public DbMonitorService()
         {
             InitializeComponent();
+            source = "IoT Data Monitoring Service";
+            log = "Application";
+            eventToWrite = "Log IoT Event";
         }
 
         protected override void OnStart(string[] args)
@@ -94,6 +101,7 @@ namespace DatabaseMonitoringWindowsService
                     //System.Text.StringBuilder sb = new System.Text.StringBuilder();
                     string logline = id + "," + temp + "," + pressure + "," + luminosity + "," + timeStamp;
                     File.AppendAllText(@"c:\alerts.txt", logline + Environment.NewLine);
+                    LogEvents()
                 }
             }
             else
@@ -102,6 +110,12 @@ namespace DatabaseMonitoringWindowsService
             }
             reader.Close();
             sqlConnection1.Close();
+        }
+        public void LogEvents() {
+            if (!EventLog.SourceExists(source))
+            EventLog.CreateEventSource(source,log);
+            //EventLog.WriteEntry(source,eventToWrite);
+            EventLog.WriteEntry(source, eventToWrite, EventLogEntryType.Information, 101, 1));
         }
         protected override void OnStop()
         {
