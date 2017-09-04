@@ -23,7 +23,7 @@ namespace DatabaseMonitoringWindowsService
 
         protected override void OnStart(string[] args)
         {
-            currentRowCount = getRowCount();
+            currentRowCount = getRowCount(); //set the row count when service starts
             //setup timer for polling
             SetupTimer();
         }
@@ -40,7 +40,7 @@ namespace DatabaseMonitoringWindowsService
         {
             //   monitoring activities here.  
             int rowCount = getRowCount();
-            if (currentRowCount > rowCount )
+            if (rowCount > currentRowCount ) // if row count is more than last set row count log alert
             {
                 LogAlert();
             }
@@ -61,6 +61,7 @@ namespace DatabaseMonitoringWindowsService
                     count = (int)cmdCount.ExecuteScalar();
                 }
             }
+            currentRowCount = count;
             return count;
         }
         static void LogAlert()
